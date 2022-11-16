@@ -1,0 +1,104 @@
+:root{
+    /* Defualt Gradient options */
+    /* 
+    --gradient: 
+        linear-gradient(217deg, #ff452c, rgba(0,0,0,0) 71%), 
+        linear-gradient(127deg, #00c00a, rgba(0,0,0,0) 71%), 
+        linear-gradient(336deg, #006eff, rgba(0,0,0,0) 71%);
+    */
+
+    --gradient: linear-gradient(
+        45deg,
+        #ffafbd,
+        #2193b0,
+        #cc2b5e,
+        #de6262,
+        #56ab2f
+    );
+
+    --gradient-zoom: 500%;
+    --gradient-opacity: 0.6;
+    --gradient-time: 30s;
+    --gradient-keyframes: linear_transition;
+
+    /* Defualt Fog levels */
+    --fog-level: 15px;
+    --fog-color: rgba(255, 255, 255, 0.123);
+}
+
+
+
+
+/* REGION FOGGY-GLASS */
+.foggy {
+    background: var(--fog-color);
+    backdrop-filter: blur(var(--fog-level));
+    -webkit-backdrop-filter: blur(var(--fog-level));
+}
+
+
+
+
+/* REGION HOLO-EFFECT */
+.holo {
+    background: var(--gradient);
+    background-size: var(--gradient-zoom);
+    animation: 
+        var(--gradient-keyframes)
+        var(--gradient-time) 
+        infinite;
+
+    opacity: var(--gradient-opacity);
+}
+
+[holo='text'] {
+    /* Makes the holo effect work like a font color */
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+[holo='ontop'] {
+    /* Makes the holo effect work like an overlay */
+    position: absolute;
+    z-index: 50;
+}
+
+
+/* 
+    This keyframs moves the background position  
+    in a circular motion to create the gradient effect.
+
+    Going top left, Top right,
+    Bottom right, Bottom left, Top left again.
+*/
+@keyframes circular_transition {
+    0% {
+        background-position: 0% 0%;
+    }
+    25% {
+        background-position: 100% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    75% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+@keyframes linear_transition {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+/* END REGION HOLO-EFFECT */
