@@ -36,8 +36,15 @@ nav[state='semi'] > span
     height: 100%;
 }
 
-nav > span p {
+nav[state='full'] > span > span {
+    flex-wrap: wrap;
+}
+nav > span > span > p {
     font-size: 5rem;
+
+    width: auto;
+    max-width: 100%;
+
     font-weight: 900;
     font-family: 'Montserrat', sans-serif;
     color: rgb(0, 0, 0);
@@ -48,7 +55,7 @@ nav > span p {
 
 
 /* Hover */
-nav[state='full'] > span p:hover {
+nav[state='full'] > span > span > p:hover {
     /* left, right */
     padding: 0 1rem 0 1rem;
     transform: scale(1.1);
@@ -79,9 +86,21 @@ nav[state='semi'] > .sticky-bottom > div > a {
     font-family: 'montserrat', sans-serif;
     text-decoration: none;
     color: rgba(0, 0, 0, 0.63);
+    transition: all 0.5s ease;
 }
 
 
+/* Hover */
+nav[state='full'] > .sticky-bottom > div > a:hover,
+nav[state='semi'] > .sticky-bottom > div > a:hover {
+    transform: scale(1.1);
+}
+
+/* Click */
+nav[state='full'] > .sticky-bottom > div > a:active,
+nav[state='semi'] > .sticky-bottom > div > a:active {
+    transform: scale(0.9);
+}
 
 
 
@@ -100,6 +119,10 @@ nav[state='semi'] > .sticky-bottom > div > a {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+[pointer-events='none'] {
+    pointer-events: none;
 }
 
 .fit-box {
@@ -121,4 +144,6 @@ nav[state='semi'] > .sticky-bottom > div > a {
     grid-column: 1;
 }
 
-
+.none {
+    display: none;
+}
