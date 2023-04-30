@@ -1,16 +1,12 @@
 {
   "compilerOptions": {
-    "noImplicitAny": true,
-    "lib": ["es2017", "es7", "es6", "dom"],
-    "module": "CommonJS",
-    "target": "es5",
-    "composite": true,
-    "declarationMap": true,
-    "outDir": "./dist",
-    "noEmit": false,
-  },
-  "include": [
-    "./src/*.ts",
-    "./src/**/*.ts"
-  ]
+    "module": "commonjs",
+    "target": "ES6",
+    "lib": ["es5", "es6", "dom"],
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "inlineSourceMap": true,
+    "moduleResolution": "node"
+  }
 }

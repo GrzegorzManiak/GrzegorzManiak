@@ -1,0 +1,14 @@
+{
+  "status": "done",
+  "assets": {
+    "mirror-tell-section.js": {
+      "name": "mirror-tell-section.js",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/mirror-tell-section.js"
+    }
+  },
+  "chunks": {
+    "core": [
+      "mirror-tell-section.js"
+    ]
+  }
+}
