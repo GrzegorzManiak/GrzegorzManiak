@@ -1,5 +1,6 @@
 # Who?
-I am a second year student at Technological University Dublin, Currently studying a Bsc in Computing with software development. I Have a keen interest in software development and have experience in a range of programming languages and  technology's.
+
+Hey, I'm Grzegorz, a second-year full-time student at Technological University Dublin. I'm studying towards a BSc in Computing with Software Development, and I'm really passionate about the subject. I enjoy exploring new technologies and keeping up with the latest trends in the field.
 
 [![GrzegorzManiak](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)
 ](https://linkedin.grzegorz.ie)
