@@ -1,6 +1,10 @@
 {
   "status": "done",
   "assets": {
+    "0f156b76b10992063bd8.wasm": {
+      "name": "0f156b76b10992063bd8.wasm",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/0f156b76b10992063bd8.wasm"
+    },
     "mirror-tell-section.js": {
       "name": "mirror-tell-section.js",
       "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/mirror-tell-section.js"
@@ -14,7 +18,5 @@
     "core": [
       "mirror-tell-section.js"
     ]
-  },
-  "error": "ModuleParseError",
-  "message": "Module parse failed: Unexpected character '\u0000' (1:0)\nThe module seem to be a WebAssembly module, but module is not flagged as WebAssembly module for webpack.\nBREAKING CHANGE: Since webpack 5 WebAssembly is not enabled by default and flagged as experimental feature.\nYou need to enable one of the WebAssembly experiments via 'experiments.asyncWebAssembly: true' (based on async modules) or 'experiments.syncWebAssembly: true' (like webpack 4, deprecated).\nFor files that transpile to WebAssembly, make sure to set the module type in the 'module.rules' section of the config (e. g. 'type: \"webassembly/async\"').\n(Source code omitted for this binary file)"
+  }
 }

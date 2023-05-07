@@ -188,5 +188,5 @@ nav[state='semi'] > .sticky-bottom > div > a:active {
 [mandelbrot='main'] > * {
     width: 100%;
     height: 100%;
-    /* filter: blur(150px); */
+    filter: blur(25px);
 }

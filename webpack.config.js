@@ -10,13 +10,16 @@ const randomWords = require('random-words');
 
 module.exports = {
     mode: 'production',
+    experiments : {
+        topLevelAwait: true,
+    },
     entry: {
         core: './src/index.ts',
     },
     module: {
         rules: [
             {
-                test: /\.ts$/,
+                test:  /\.js$|ts/,
                 use: [
                     {
                         loader: 'happypack/loader?id=babel',
