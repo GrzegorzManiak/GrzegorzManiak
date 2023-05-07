@@ -1,7 +1,15 @@
 
 import { ComplexNumber, Coords, Mandelbrot } from './index.d';
 
+const instantiateWasm = async () => {
+    const module = await WebAssembly.instantiateStreaming(
+        fetch("/www/webpack_bundles/bin.wasm"), {});
+    console.log(module);
 
+    const instance = module.instance;
+};
+
+instantiateWasm();
 
 /**
  * @name draw_pixel - Draw a pixel on a canvas
@@ -29,10 +37,10 @@ const mandelbrot_elm = document.querySelector('[mandelbrot="main"]'),
     mandelbrot = mandelbrot_elm.appendChild(document.createElement('canvas'));
 console.log(mandelbrot_elm, mandelbrot);
 
-async function calc_mandelbrot(
+function calc_mandelbrot(
     c: ComplexNumber, 
     max_iter: number
-): Promise<number> {
+): number {
     let z_real = 0, z_imaginary = 0, n = 0;
   
     while (n < max_iter && Math.abs(z_real * z_real + z_imaginary * z_imaginary) < 4) {
@@ -50,7 +58,7 @@ async function calc_mandelbrot(
 function get_color(
     value: number,
     max_iter: number
-) {
+): string {
     if (value === max_iter)
       return '#000000'; // -- Black color for points inside the Mandelbrot set
 
@@ -95,11 +103,11 @@ function get_color(
   
 
 // -- Calculate the mandelbrot
-async function calculate_mandelbrot(
+function calculate_mandelbrot(
     pixel_scale: number = 1,
     max_iter: number = 80,
-    mandelbrot_set: Mandelbrot = { min_r: -2, max_r: 1, min_i: -1, max_i: 1 }
-) {
+    mandelbrot_set: Mandelbrot,
+): void {
     // -- Get the canvas context
     const ctx = mandelbrot.getContext('2d');
     if (!ctx) return;
@@ -136,68 +144,71 @@ async function calculate_mandelbrot(
             };
 
             // -- Compute the number of iterations
-            calc_mandelbrot(c, max_iter).then(async(m) => draw_pixel(
+            const m = calc_mandelbrot(c, max_iter);
+            draw_pixel(
                 ctx, { x, y }, get_color(m, max_iter),
                 Math.ceil(1 / pixel_scale)
-            ));
+            )
         }
     }
 }
 
 
-/**
- * @name sleep
- * @description Sleep for a given amount of time
- * @param {number} ms The amount of time to sleep in milliseconds
- * @returns {Promise<void>}
- */
-function sleep(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+// calculate_mandelbrot(1, 15, { min_r: -2, max_r: 1, min_i: -1, max_i: 1 });
 
-// -- Calculate the mandelbrot
-(async () => {
-    // await calculate_mandelbrot(0.25, 105);
-    const iter_scales = [ 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 45, 40, 35, 30, 25, 20, 15, 10, 5 ];
-    const px_scale = 0.15;
-    await calculate_mandelbrot(
-        1,
-        15,
-        {
-            min_r: -1.25,
-            max_r: 1.25,
-            min_i: -1.25,
-            max_i: 1.25
-        }
-    );
+// /**
+//  * @name sleep
+//  * @description Sleep for a given amount of time
+//  * @param {number} ms The amount of time to sleep in milliseconds
+//  * @returns {Promise<void>}
+//  */
+// function sleep(ms: number): Promise<void> {
+//     return new Promise(resolve => setTimeout(resolve, ms));
+// }
 
-    // // -- Calculate the mandelbrot
-    // let i = 0;
-    // while (true) {
-    //     const set: Mandelbrot = {
-    //         min_r: -1.25,
-    //         max_r: 1.25,
-    //         min_i: -1.25,
-    //         max_i: 1.25
-    //     };
+// // -- Calculate the mandelbrot
+// (async () => {
+//     // await calculate_mandelbrot(0.25, 105);
+//     const iter_scales = [ 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 45, 40, 35, 30, 25, 20, 15, 10, 5 ];
+//     const px_scale = 0.15;
+//    calculate_mandelbrot(
+//         1,
+//         15,
+//         {
+//             min_r: -1.25,
+//             max_r: 1.25,
+//             min_i: -1.25,
+//             max_i: 1.25
+//         }
+//     );
+
+//     // // -- Calculate the mandelbrot
+//     // let i = 0;
+//     // while (true) {
+//     //     const set: Mandelbrot = {
+//     //         min_r: -1.25,
+//     //         max_r: 1.25,
+//     //         min_i: -1.25,
+//     //         max_i: 1.25
+//     //     };
         
-    //     // -- Calculate the mandelbrot
-    //     await calculate_mandelbrot(
-    //         px_scale,
-    //         i + 5,
-    //         set
-    //     );
+//     //     // -- Calculate the mandelbrot
+//     //     await calculate_mandelbrot(
+//     //         px_scale,
+//     //         i + 5,
+//     //         set
+//     //     );
 
-    //     // -- Sleep for 1 second
-    //     await sleep(10);
-    //     i++;
+//     //     // -- Sleep for 1 second
+//     //     await sleep(10);
+//     //     i++;
 
-    //     if (i >= 50) i = 0;
-    // }
+//     //     if (i >= 50) i = 0;
+//     // }
 
-    // // for (let i = 0; i < max_iter.length; i++) {
-    //     await calculate_mandelbrot(0.35, max_iter[i]);
-    //     await sleep(1000);
-    //     console.log('Done');
-    // }
-})();
+//     // // for (let i = 0; i < max_iter.length; i++) {
+//     //     await calculate_mandelbrot(0.35, max_iter[i]);
+//     //     await sleep(1000);
+//     //     console.log('Done');
+//     // }
+// })();
