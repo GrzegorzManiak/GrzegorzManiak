@@ -60,6 +60,7 @@ nav[state='semi'] > span
 nav[state='full'] > span > span {
     flex-wrap: wrap;
 }
+
 nav > span > span > p {
     font-size: 5rem;
 
@@ -68,10 +69,15 @@ nav > span > span > p {
 
     font-weight: 900;
     font-family: 'Montserrat', sans-serif;
-    color: rgb(0, 0, 0);
+    color: rgb(192, 192, 192);
     margin: 0;
     transition: all 0.5s ease;
     user-select: none;
+
+    z-index: 200;
+
+
+    
 }
 
 
@@ -167,4 +173,20 @@ nav[state='semi'] > .sticky-bottom > div > a:active {
 
 .none {
     display: none;
+}
+
+[mandelbrot='main'] {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 105;
+}
+
+/* This is for the canvas inside */
+[mandelbrot='main'] > * {
+    width: 100%;
+    height: 100%;
+    /* filter: blur(150px); */
 }
