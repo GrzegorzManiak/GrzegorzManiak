@@ -77,7 +77,7 @@ module.exports = {
             loaders: ['babel-loader?cacheDirectory=true'],
         }),
         // new BundleAnalyzerPlugin(),
-        new BundleTracker({filename: './webpack-stats.json'}),
+        new BundleTracker({filename: './www/webpack-stats.json'}),
         new CleanWebpackPlugin(),
     ],
     target: 'web',

@@ -13,6 +13,27 @@ nav {
     box-sizing: border-box;
 }
 
+.grid-1-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.grid-1-1 > * {
+    grid-row: 1;
+    grid-column: 1;
+    position: absolute;
+}
+
+[data-phy-env] {    
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    position: fixed;
+
+    top: 0;
+    left: 0;
+}
 
 /* 
     There are 3 states for the nav bar.
