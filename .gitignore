@@ -1,1 +1,5 @@
 node_modules
+
+# Rust
+wasm/target
+wasm/Cargo.lock

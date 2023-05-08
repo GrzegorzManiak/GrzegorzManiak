@@ -1,9 +1,61 @@
 {
   "status": "done",
   "assets": {
-    "0f156b76b10992063bd8.wasm": {
-      "name": "0f156b76b10992063bd8.wasm",
-      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/0f156b76b10992063bd8.wasm"
+    "21f115a9a1b87580d56a.wasm": {
+      "name": "21f115a9a1b87580d56a.wasm",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/21f115a9a1b87580d56a.wasm"
+    },
+    "4c2b631d63f15f9f4d08.wasm": {
+      "name": "4c2b631d63f15f9f4d08.wasm",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/4c2b631d63f15f9f4d08.wasm"
+    },
+    "51baee83d84d69fda0fe.wasm": {
+      "name": "51baee83d84d69fda0fe.wasm",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/51baee83d84d69fda0fe.wasm"
+    },
+    "53be371ff90328421bbc.wasm": {
+      "name": "53be371ff90328421bbc.wasm",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/53be371ff90328421bbc.wasm"
+    },
+    "75c88039ce13ff62e87e.wasm": {
+      "name": "75c88039ce13ff62e87e.wasm",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/75c88039ce13ff62e87e.wasm"
+    },
+    "85d4d23b80bc4d978031.wasm": {
+      "name": "85d4d23b80bc4d978031.wasm",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/85d4d23b80bc4d978031.wasm"
+    },
+    "8f9d4dccd91e7e04ba73.wasm": {
+      "name": "8f9d4dccd91e7e04ba73.wasm",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/8f9d4dccd91e7e04ba73.wasm"
+    },
+    "96e997c14493c500977a.wasm": {
+      "name": "96e997c14493c500977a.wasm",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/96e997c14493c500977a.wasm"
+    },
+    "a5d2516bc6dd50468713.wasm": {
+      "name": "a5d2516bc6dd50468713.wasm",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/a5d2516bc6dd50468713.wasm"
+    },
+    "ada77e56174c06c78d81.wasm": {
+      "name": "ada77e56174c06c78d81.wasm",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/ada77e56174c06c78d81.wasm"
+    },
+    "b9f60defc58f152ea599.wasm": {
+      "name": "b9f60defc58f152ea599.wasm",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/b9f60defc58f152ea599.wasm"
+    },
+    "c0dc0640533d4439fd09.wasm": {
+      "name": "c0dc0640533d4439fd09.wasm",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/c0dc0640533d4439fd09.wasm"
+    },
+    "dbb0a32c05451dfbc704.wasm": {
+      "name": "dbb0a32c05451dfbc704.wasm",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/dbb0a32c05451dfbc704.wasm"
+    },
+    "f9a6a65dd8a55ee6ff4a.wasm": {
+      "name": "f9a6a65dd8a55ee6ff4a.wasm",
+      "path": "/home/grzegorzm/github/GrzegorzManiak/www/webpack_bundles/f9a6a65dd8a55ee6ff4a.wasm"
     },
     "mirror-tell-section.js": {
       "name": "mirror-tell-section.js",
@@ -18,5 +70,7 @@
     "core": [
       "mirror-tell-section.js"
     ]
-  }
+  },
+  "error": "ModuleBuildError",
+  "message": "Module build failed (from ./node_modules/happypack/loader.js):\nSyntaxError: /home/grzegorzm/github/GrzegorzManiak/src/index.ts: Unexpected token, expected \",\" (43:0)\n\n  41 |  calc_mandelbrot(mandelbrot, selector, 100, new Vec2d(1000, 1000)\n  42 |  \n> 43 | }\n     | ^\n    at instantiate (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:653:32)\n    at constructor (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:947:12)\n    at TypeScriptParserMixin.raise (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:3271:19)\n    at TypeScriptParserMixin.unexpected (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:3301:16)\n    at TypeScriptParserMixin.expect (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:3643:28)\n    at TypeScriptParserMixin.parseCallExpressionArguments (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:11051:14)\n    at TypeScriptParserMixin.parseCoverCallAndAsyncArrowHead (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:10980:29)\n    at TypeScriptParserMixin.parseSubscript (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:10915:19)\n    at TypeScriptParserMixin.parseSubscript (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:9240:18)\n    at TypeScriptParserMixin.parseSubscripts (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:10886:19)\n    at TypeScriptParserMixin.parseExprSubscripts (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:10877:17)\n    at TypeScriptParserMixin.parseUpdate (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:10856:21)\n    at TypeScriptParserMixin.parseMaybeUnary (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:10832:23)\n    at TypeScriptParserMixin.parseMaybeUnary (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:9755:18)\n    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:10670:61)\n    at TypeScriptParserMixin.parseExprOps (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:10675:23)\n    at TypeScriptParserMixin.parseMaybeConditional (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:10652:23)\n    at TypeScriptParserMixin.parseMaybeAssign (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:10613:21)\n    at TypeScriptParserMixin.parseMaybeAssign (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:9702:20)\n    at TypeScriptParserMixin.parseExpressionBase (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:10567:23)\n    at /home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:10563:39\n    at TypeScriptParserMixin.allowInAnd (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:12253:16)\n    at TypeScriptParserMixin.parseExpression (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:10563:17)\n    at TypeScriptParserMixin.parseStatementContent (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:12684:23)\n    at TypeScriptParserMixin.parseStatementContent (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:9399:18)\n    at TypeScriptParserMixin.parseStatementLike (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:12550:17)\n    at TypeScriptParserMixin.parseStatementListItem (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:12530:17)\n    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:13122:61)\n    at TypeScriptParserMixin.parseBlockBody (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:13115:10)\n    at TypeScriptParserMixin.parseBlock (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:13103:10)\n    at TypeScriptParserMixin.parseFunctionBody (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:11925:24)\n    at TypeScriptParserMixin.parseFunctionBodyAndFinish (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:11911:10)\n    at TypeScriptParserMixin.parseFunctionBodyAndFinish (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:9142:18)\n    at /home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:13258:12\n    at TypeScriptParserMixin.withSmartMixTopicForbiddingContext (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:12235:14)\n    at TypeScriptParserMixin.parseFunction (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:13257:10)\n    at TypeScriptParserMixin.parseFunctionStatement (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:12917:17)\n    at TypeScriptParserMixin.parseStatementContent (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:12576:21)\n    at TypeScriptParserMixin.parseStatementContent (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:9399:18)\n    at TypeScriptParserMixin.parseStatementLike (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:12550:17)\n    at TypeScriptParserMixin.parseModuleItem (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:12527:17)\n    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:13122:36)\n    at TypeScriptParserMixin.parseBlockBody (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:13115:10)\n    at TypeScriptParserMixin.parseProgram (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:12438:10)\n    at TypeScriptParserMixin.parseTopLevel (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:12428:25)\n    at TypeScriptParserMixin.parse (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:14251:10)\n    at TypeScriptParserMixin.parse (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:10041:18)\n    at parse (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/parser/lib/index.js:14292:38)\n    at parser (/home/grzegorzm/github/GrzegorzManiak/node_modules/@babel/core/lib/parser/index.js:41:34)\n    at parser.next (<anonymous>)"
 }

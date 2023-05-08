@@ -31,6 +31,7 @@
         "webpack-cli": "^4.10.0"
     },
     "scripts": {
-        "css": "ts-node ./scripts/css.ts"
+        "css": "ts-node ./scripts/css.ts",
+        "build-rs": "cd ./wasm && wasm-pack build --target web --out-dir ../src/wasm"
     }
 }

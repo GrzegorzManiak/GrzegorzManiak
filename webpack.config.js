@@ -12,6 +12,7 @@ module.exports = {
     mode: 'production',
     experiments : {
         topLevelAwait: true,
+        asyncWebAssembly: true,
     },
     entry: {
         core: './src/index.ts',

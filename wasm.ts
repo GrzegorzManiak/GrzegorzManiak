@@ -1,4 +1,4 @@
-import { ComplexNumber, Mandelbrot, Proccessable } from './classes';
+import { ComplexNumber, Mandelbrot, Proccessable } from './src/classes';
 
 export function calc_mandelbrot(c: ComplexNumber, max_iter: number): number {
     let z_real = 0.0, z_imaginary = 0.0, n = 0.0;
