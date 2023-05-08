@@ -35,9 +35,11 @@ fn run() -> Result<(), JsValue> {
 pub fn calc_mandelbrot(
     mandelbrot: &Mandelbrot,
     canvas: &web_sys::HtmlCanvasElement,
-    max_iter: u32,
+    max_iter: f64,
     pixel_scale: f64,
 ) -> Result<(), JsValue>  {
+    // -- Min max the pixel scale, 0 to 1
+    let pixel_scale = pixel_scale.min(1.0).max(0.0);
 
     // -- Get the canvas context
     let context = canvas
@@ -106,7 +108,7 @@ impl Mandelbrot {
     #[wasm_bindgen]
     pub fn calc_mandelbrot(
         complex: &Complex,
-        max_iter: u32,
+        max_iter: f64,
     ) -> u32 {
         let mut z_real = 0.0;
         let mut z_imaginary = 0.0;
@@ -225,8 +227,8 @@ pub fn hsl_to_rgb(
 
 pub fn get_color(
     m: u32,
-    max_iter: u32,
+    max_iter: f64,
 ) -> String {
-    let (r, g, b) = hsl_to_rgb(m as f64 / max_iter as f64 * 360.0, 100.0, 50.0);
+    let (r, g, b) = hsl_to_rgb(m as f64 / max_iter * 360.0, 100.0, 50.0);
     format!("rgb({}, {}, {})", r * 255.0, g * 255.0, b * 255.0)
 }
