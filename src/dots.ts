@@ -1,4 +1,4 @@
-import { CanvasInstance, Dots, Dot } from './index.d';
+import { CanvasInstance, Dots, Dot, DotsDetailed } from './index.d';
 import { get_relative_pos } from './render';
 
 
@@ -7,14 +7,14 @@ import { get_relative_pos } from './render';
  * @name render_dots
  * @description renders the dots to the canvas
  * @param {CanvasInstance} ci the canvas instance to render to
- * @param {Dots} dots the dots to render
+ * @param {Dots | DotsDetailed} dots the dots to render
  * @param {MouseEvent} e the mouse event to use for the mouse position
  * @param {number} [x_o=0] the x coordinate to start rendering at
  * @param {number} [y_o=0] the y coordinate to start rendering at
  */
 export const render_dots = (
     ci: CanvasInstance, 
-    dots: Dots,
+    dots: Dots | DotsDetailed,
     e: MouseEvent = null,
     x_o: number = 0,
     y_o: number = 0
@@ -28,11 +28,29 @@ export const render_dots = (
     ci.ctx.arc(mouse_pos[0], mouse_pos[1], 10, 0, 2 * Math.PI);
     ci.ctx.fill();
 
+    
+    // -- Check if the dots are detailed
+    let detailed = false;
+    if ('data' in dots) {
+        detailed = true;
+        dots.rows = dots.data.length;
+        dots.cols = 0;
+
+        // -- Get the longest row
+        for (let row = 0; row < dots.rows; row++) {
+            if (dots.data[row].length > dots.cols) 
+                dots.cols = dots.data[row].length;
+        }
+    }
+
+
     // -- Loop through each row
     for (let row = 0; row < dots.rows; row++) {
 
         // -- Loop through each column
         for (let col = 0; col < dots.cols; col++) {
+            // -- Check if the dot is 0
+            if (detailed && (dots as DotsDetailed).data[row][col] !== 1) continue;
 
             // -- Calculate the x and y coordinates
             let x = (col * dots.dot_size) + (col * dots.dot_spacing) + x_o,

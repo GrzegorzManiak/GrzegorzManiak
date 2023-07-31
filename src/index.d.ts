@@ -31,3 +31,7 @@ export interface Dots {
 
     color: string;
 }
+
+export interface DotsDetailed extends Dots {
+    data: Array<Array<number>>;
+}
