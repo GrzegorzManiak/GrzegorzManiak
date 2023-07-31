@@ -1,38 +1,65 @@
+import { render_dots } from './dots';
+import { Dots } from './index.d';
+import { add_canvas, start_draw } from './render';
 
-import init, { Complex, Mandelbrot, calc_mandelbrot } from './wasm/dom';
-init().then(() => main());
+// -- Attempt to get the canvas elements
+const main_canvas = document.getElementById('main-canvas') as HTMLCanvasElement;
+
+// -- Check if the canvas elements exist
+if (!main_canvas) 
+    throw new Error('One ore more Canvas elements were not found');
+
+// -- Get the canvas contexts
+const main_context = main_canvas.getContext('2d');
+
+// -- Set the canvas contexts to be the same size as the canvas
+export const update_canvas_size = (): void => {
+    main_context.canvas.width = main_canvas.offsetWidth;
+    main_context.canvas.height = main_canvas.offsetHeight;
+    main_context.scale(1, 1);
+};
 
 
-// -- Get the main mandelbrot container and add a canvas element
-const mandelbrot_parent_elm = document.querySelector('[mandelbrot="main"]'),
-    mandelbrot_elm = mandelbrot_parent_elm.appendChild(document.createElement('canvas'));
-const sleep = async (ms) => new Promise(resolve => setTimeout(resolve, ms));
+// -- DEV
+const dots: Dots = {
+    rows: 10,
+    cols: 50,
 
-async function main() {
-    const mandelbrot = new Mandelbrot(
-        new Complex(-2, 1),
-        new Complex(1, -1)
-    );
-    
-    // calc_mandelbrot(
-    //     mandelbrot, 
-    //     mandelbrot_elm, 
-    //     6.5, 0.25
-    // );
+    dot_size: 5,
+    dot_spacing: 15,
 
-    
-    const start = 2.5;
-    const end = 60.0;
-    const step = 0.15;
+    force: 25,
+    force_size: 100,
 
-    for (let i = start; i < end; i += step) {
-        console.log("i: ", i, " of ", end, " step: ", step);
-        calc_mandelbrot(
-            mandelbrot, 
-            mandelbrot_elm, 
-            i, 0.25
-        );
-        console.log("done");
-        await sleep(2.5);
-    }
+    max_dist: 50,
+    color: '#fff'
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // -- We need to wait for the dom to load before we can do anything
+    //    with styles as it could be that the styles are not loaded yet
+    console.log('DOM Loaded');
+    update_canvas_size();
+
+    let mouse_event: MouseEvent = null;
+    document.addEventListener('mousemove', (e) => mouse_event = e);
+
+
+    // -- Add the canvases to the draw loop
+    const mc = add_canvas(120, main_context, (ctx) => {
+
+        // -- Get the width and height of the dots grid
+        const width = dots.cols * dots.dot_size + (dots.cols * dots.dot_spacing),
+            height = dots.rows * dots.dot_size + (dots.rows * dots.dot_spacing);
+
+        // -- Calculate the x and y coordinates
+        const x = (ctx.canvas.width / 2) - (width / 2),
+            y = (ctx.canvas.height / 2) - (height / 2);
+
+        render_dots(mc, dots, mouse_event, x, y);
+    });
+
+    // -- Start the animation loop
+    start_draw();
+});

@@ -1,37 +1,32 @@
 {
     "dependencies": {
-        "@babel/preset-typescript": "^7.21.5",
-        "assemblyscript": "^0.27.5",
+        "@babel/plugin-proposal-class-properties": "^7.18.6",
         "babel": "^6.23.0",
         "clean-webpack-plugin": "^4.0.0",
-        "happypack": "^5.0.1",
-        "konva": "^9.0.1",
-        "live-server": "^1.2.2",
-        "random-words": "^1.3.0",
-        "stream-browserify": "^3.0.0",
+        "random-words": "^2.0.0",
         "string-replace-loader": "^3.1.0",
-        "terser-webpack-plugin": "^5.3.7",
+        "terser-webpack-plugin": "^5.3.9",
         "ts-loader": "^9.3.1",
-        "ts-node": "^10.8.1",
-        "typescript": "^4.7.4",
-        "util": "^0.12.5",
-        "webpack-bundle-tracker": "^1.8.1"
+        "ts-node": "^10.9.1",
+        "ts-node-dev": "^2.0.0",
+        "typescript": "^4.9.3",
+        "webpack": "^5.88.1",
+        "webpack-bundle-tracker": "^2.0.1",
+        "webpack-cli": "^5.1.4"
     },
     "devDependencies": {
-        "@babel/core": "^7.18.6",
-        "@babel/preset-env": "^7.18.6",
-        "@types/csso": "^5.0.0",
-        "archiver": "^5.3.1",
-        "babel-loader": "^8.2.5",
-        "compression-webpack-plugin": "^10.0.0",
-        "csso": "^5.0.5",
-        "wasm-loader": "^1.3.0",
-        "webpack": "^5.73.0",
+        "@babel/core": "^7.21.4",
+        "@babel/preset-env": "^7.21.4",
+        "@babel/preset-flow": "^7.21.4",
+        "@babel/preset-typescript": "^7.21.4",
+        "@types/dompurify": "^2.4.0",
+        "babel-loader": "^8.3.0",
+        "clean-webpack-plugin": "^4.0.0",
+        "happypack": "^5.0.1",
+        "random-words": "^1.3.0",
+        "terser-webpack-plugin": "^5.3.7",
+        "webpack": "^5.77.0",
         "webpack-bundle-analyzer": "^4.8.0",
         "webpack-cli": "^4.10.0"
-    },
-    "scripts": {
-        "css": "ts-node ./scripts/css.ts",
-        "build-rs": "cd ./wasm && wasm-pack build --target web --out-dir ../src/wasm"
     }
 }

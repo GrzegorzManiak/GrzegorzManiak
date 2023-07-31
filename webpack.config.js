@@ -5,22 +5,21 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const BundleTracker = require('webpack-bundle-tracker');
 const happyThreadPool = HappyPack.ThreadPool({ size: 6 });
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const randomWords = require('random-words');
 
 
 module.exports = {
     mode: 'production',
-    experiments : {
-        topLevelAwait: true,
-        asyncWebAssembly: true,
-    },
+    context: __dirname,
     entry: {
-        core: './src/index.ts',
+        main: './src/index.ts'
+    },
+    node: {
+        __filename: true
     },
     module: {
         rules: [
             {
-                test:  /\.js$|ts/,
+                test: /\.ts$/,
                 use: [
                     {
                         loader: 'happypack/loader?id=babel',
@@ -71,8 +70,8 @@ module.exports = {
         //     },
         // },
         // runtimeChunk: true,
-        // removeAvailableModules: false,
-        // removeEmptyChunks: false,
+        removeAvailableModules: false,
+        removeEmptyChunks: false,
     },
     plugins: [
         new HappyPack({
@@ -80,24 +79,18 @@ module.exports = {
             threadPool: happyThreadPool,
             loaders: ['babel-loader?cacheDirectory=true'],
         }),
-        // new BundleAnalyzerPlugin(),
-        new BundleTracker({filename: './www/webpack-stats.json'}),
+        new BundleAnalyzerPlugin(),
+        new BundleTracker({
+            path: path.resolve(__dirname, 'bundles'),
+            filename: 'webpack-stats.json',
+        }),
         new CleanWebpackPlugin(),
     ],
     target: 'web',
     output: {
-        filename: ({ chunk: { name } }) => {
-            // -- Generate the random string
-            const randomString = randomWords({ 
-                exactly: 3, 
-                minLength: 4,
-                join: '-',
-                seed: name
-            });
-
-            // -- Return the filename
-            return `${randomString}.js`;
-        },
-        path: path.resolve(__dirname, './www/webpack_bundles'),
+        filename: '[name].js',
+        sourceMapFilename: '[name].js.map',
+        path: path.resolve(__dirname, 'bundles'),
     },
+    devtool: 'source-map'
 };
