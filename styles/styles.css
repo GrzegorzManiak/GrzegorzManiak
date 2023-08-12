@@ -1,0 +1,149 @@
+body {
+    background-color: rgb(255, 255, 255);
+
+    width: 100vw;
+    height: 100vh;
+
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+
+/* 
+    There are 3 states for the nav bar.
+    - full, aka when the user first loads the page.
+    - semi, when the user starts scrolling down.
+    - mini, when the user scrolls down far enough,
+            to hide the nav bar.
+*/
+nav[state='full'],
+nav[state='semi']
+{
+    height: 100vh;
+    position: relative;
+}
+
+
+/* Header */
+nav[state='full'] > span,
+nav[state='semi'] > span
+{
+    height: 100%;
+}
+
+nav[state='full'] > span > span {
+    flex-wrap: wrap;
+}
+nav > span > span > p {
+    font-size: 5rem;
+
+    width: auto;
+    max-width: 100%;
+
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(0, 0, 0);
+    margin: 0;
+    transition: all 0.5s ease;
+    user-select: none;
+}
+
+
+/* Hover */
+nav[state='full'] > span > span > p:hover {
+    /* left, right */
+    padding: 0 1rem 0 1rem;
+    transform: scale(1.1);
+}
+
+
+
+
+
+/* Nav bar footer */
+nav[state='full'] > .sticky-bottom,
+nav[state='semi'] > .sticky-bottom
+{
+    position: absolute;
+    z-index: 100;
+    bottom: 0;
+    height: auto;
+    padding: 1rem;
+}
+
+nav[state='full'] > .sticky-bottom > div,
+nav[state='semi'] > .sticky-bottom > div {
+    gap: 1rem;
+}
+
+nav[state='full'] > .sticky-bottom > div > a,
+nav[state='semi'] > .sticky-bottom > div > a {
+    font-family: 'montserrat', sans-serif;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.63);
+    transition: all 0.5s ease;
+}
+
+
+/* Hover */
+nav[state='full'] > .sticky-bottom > div > a:hover,
+nav[state='semi'] > .sticky-bottom > div > a:hover {
+    transform: scale(1.1);
+}
+
+/* Click */
+nav[state='full'] > .sticky-bottom > div > a:active,
+nav[state='semi'] > .sticky-bottom > div > a:active {
+    transform: scale(0.9);
+}
+
+
+
+/* 
+    Common styles
+*/
+[flex='col-center'] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+[flex='row-center'] {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+[pointer-events='none'] {
+    pointer-events: none;
+}
+
+.fit-box {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+/* the children should all stack */
+.overlap {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.overlap > * {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.none {
+    display: none;
+}
