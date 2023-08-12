@@ -2,17 +2,30 @@
 export const easing_functions: {
     [key: string]: (t: number) => number
 } = {
-    linear : t => t,
-	easeInQuad : t => Math.pow(t, 2),
-	easeOutQuad : t => 1 - Math.pow(1 - t, 2),
-	easeInOutQuad : t => t < .5 ? Math.pow(t * 2, 2) / 2 : (1 - Math.pow(1 - (t * 2 - 1), 2)) / 2 + .5,
-	easeInCubic : t => Math.pow(t, 3),
-	easeOutCubic : t => 1 - Math.pow(1 - t, 3),
-	easeInOutCubic : t => t < .5 ? Math.pow(t * 2, 3) / 2 : (1 - Math.pow(1 - (t * 2 - 1), 3)) / 2 + .5,
-	easeInQuart : t => Math.pow(t, 4),
-	easeOutQuart : t => 1 - Math.pow(1 - t, 4),
-	easeInOutQuart : t => t < .5 ? Math.pow(t * 2, 4) / 2 : (1 - Math.pow(1 - (t * 2 - 1), 4)) / 2 + .5,
-	easeInQuint : t => Math.pow(t, 5),
-	easeOutQuint : t => 1 - Math.pow(1 - t, 5),
-	easeInOutQuint : t => t < .5 ? Math.pow(t * 2, 5) / 2 : (1 - Math.pow(1 - (t * 2 - 1), 5)) / 2 + .5
+    // no easing, no acceleration
+    linear: t => t,
+    // accelerating from zero velocity
+    easeInQuad: t => t*t,
+    // decelerating to zero velocity
+    easeOutQuad: t => t*(2-t),
+    // acceleration until halfway, then deceleration
+    easeInOutQuad: t => t<.5 ? 2*t*t : -1+(4-2*t)*t,
+    // accelerating from zero velocity 
+    easeInCubic: t => t*t*t,
+    // decelerating to zero velocity 
+    easeOutCubic: t => (--t)*t*t+1,
+    // acceleration until halfway, then deceleration 
+    easeInOutCubic: t => t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1,
+    // accelerating from zero velocity 
+    easeInQuart: t => t*t*t*t,
+    // decelerating to zero velocity 
+    easeOutQuart: t => 1-(--t)*t*t*t,
+    // acceleration until halfway, then deceleration
+    easeInOutQuart: t => t<.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t,
+    // accelerating from zero velocity
+    easeInQuint: t => t*t*t*t*t,
+    // decelerating to zero velocity
+    easeOutQuint: t => 1+(--t)*t*t*t*t,
+    // acceleration until halfway, then deceleration 
+    easeInOutQuint: t => t<.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t
 }
