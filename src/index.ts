@@ -41,7 +41,7 @@ const dots: Dots = {
 let dots_detailed: number[][] | null = null,
     name_width: number = 0, 
     name_height: number = 0,
-    text = 'GRZEGORZ.IE',
+    text = 'GRZEGORZ',
     frame_rate = 90,
     auto_scale = true,
     font_size = 17,
@@ -78,8 +78,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     log('INFO', 'DOM Loaded');
 
     // -- Add the mouse events
-    let mouse_event: MouseEvent = null;
-    document.addEventListener('mousemove', (e) => mouse_event = e);
+    let event: MouseEvent | TouchEvent = null;
+    document.addEventListener('mousemove', (e) => event = e);
+
+    // -- Touch events
+    document.addEventListener('touchmove', (e) => event = e);
+    document.addEventListener('touchend', () => event = null);
 
 
     // -- Add the canvases to the draw loop
@@ -104,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         render_dots(mc, {
             ...dots,
             data: dots_detailed,
-        }, mouse_event, 
+        }, event, 
             x, 
             y
         );
@@ -112,13 +116,26 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 
-    // -- Bounce function
+    /**
+     * This function animates the text in using
+     * a defined easing function which can be changed
+     * in the control panel
+     */
+    let animating = false;
     const bounce = () => {
+        // -- Check if we are already animating
+        if (animating) return;
+
+        // -- Set the starting values
         const start_font_size = font_size,
             start_dot_size = dots.dot_size,
             start_dot_spacing = dots.dot_spacing;
 
-        mc.animate((a_time) => {
+        // -- Set the animation flag
+        animating = true;
+
+        // -- Animate the text in
+        const promise = mc.animate((a_time) => {
             // -- Ease the time
             a_time = easing_functions[easing_function](a_time);
 
@@ -135,37 +152,90 @@ document.addEventListener('DOMContentLoaded', async () => {
             // -- Set the dot spacing
             dots.dot_spacing = new_dot_spacing;
         }, anim_lenght);
+
+        // -- When the animation is done
+        promise.then(() => animating = false);
     }
     
 
 
-
+    /**
+     * This function adjusts all the scale variables
+     * depending on the size of the canvas
+     */
     const adjust_scale = () => {
+        const width = play_with_me.clientWidth;
 
-        // -- Calc the % of the width that the text takes up
-        const text_width = dots_detailed[0].length * dots.dot_size + (dots_detailed[0].length * dots.dot_spacing),
-            percent = (text_width / mc.canvas.width) * 100;
+        const mobile = {
+            width: 0,
+            font_size: 12,
+            dot_size: 1.25,
+            dot_spacing: 2.5,
+        }
 
-        // -- We want the text to take up 80% of the width
-        const max_percent = 80;
+        const tablet = {
+            width: 750,
+            font_size: 13,
+            dot_size: 3,
+            dot_spacing: 3,
+        }
 
-        // -- Calc the new scale
-        const new_scale = (max_percent / percent) * 100;
-        scale = new_scale / 100;
+        const desktop = {
+            width: 1440,
+            font_size: 17,
+            dot_size: 4,
+            dot_spacing: 5,
+        }
+
+
+        // -- Interpolate the scale in between the two closest
+        //    sizes
+        let current = desktop;
+        const t_m = (width - mobile.width) / (tablet.width - mobile.width),
+            t_t = (width - tablet.width) / (desktop.width - tablet.width);
+
+        // -- Inbetween the phone and tablet
+        if (width > mobile.width && width < tablet.width) current = {
+            width: width,
+            font_size: lerp(mobile.font_size, tablet.font_size, t_m),
+            dot_size: lerp(mobile.dot_size, tablet.dot_size, t_m),
+            dot_spacing: lerp(mobile.dot_spacing, tablet.dot_spacing, t_m),
+        }
+
+        // -- Inbetween the tablet and desktop
+        else if (width > tablet.width && width < desktop.width) current = {
+            width: width,
+            font_size: lerp(tablet.font_size, desktop.font_size, t_t),
+            dot_size: lerp(tablet.dot_size, desktop.dot_size, t_t),
+            dot_spacing: lerp(tablet.dot_spacing, desktop.dot_spacing, t_t),
+        }
+
+        else if (width > desktop.width) current = desktop;
+
+
+        // -- Set the variables
+        font_size = current.font_size;
+        dots.dot_size = current.dot_size;
+        dots.dot_spacing = current.dot_spacing;
+        
+        ctrl['Font Size'] = font_size;
+        ctrl['Dot Size'] = dots.dot_size;
+        ctrl['Dot Spacing'] = dots.dot_spacing;
     };
+
 
 
     // -- On resize update the canvas size
     window.addEventListener('resize', () => {
-        // -- Calculate a new font size
         if (!auto_scale) return;
-        // adjust_scale();
+        adjust_scale();
     });
 
 
-    // adjust_scale();
     mc.update_canvas_size();
+    adjust_scale();
     bounce();
+
 
 
     // -- Add the controls
@@ -182,6 +252,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     gui.add(ctrl, 'Easing Function', Object.keys(easing_functions)).onChange((v) => easing_function = v);
     gui.add(ctrl, 'Animation Length', 1, 10000).onChange((v) => anim_lenght = v);
     gui.add({ 'Bounce': bounce }, 'Bounce');
+    gui.add({ 'Reset': () => {
+        adjust_scale();
+        bounce();
+    }}, 'Reset');
     gui.close();
 
     gui._onOpenClose = () => {
@@ -190,3 +264,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             play_with_me.classList.add('hide');
     };
 });
+
+
+
+const lerp = (a: number, b: number, t: number) =>
+    a + (b - a) * t;

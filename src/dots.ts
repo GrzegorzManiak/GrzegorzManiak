@@ -6,17 +6,28 @@ import CanvasInstance from './canvas/instance';
 /**
  * @name get_relative_pos
  * @description gets the relative position of the mouse on the canvas
- * @param {MouseEvent} e the mouse event to use for the mouse position
+ * @param {MouseEvent | TouchEvent} e the mouse event to use for the mouse position
  * @returns {[number, number]} the relative position of the mouse on the canvas
  */
 export const get_relative_pos = (
     ci: CanvasInstance,
-    e: MouseEvent
+    e: MouseEvent | TouchEvent
 ): [number, number] => {
     const rect = ci.canvas.getBoundingClientRect();
-    return [
+    // return [
+    //     e.clientX - rect.left,
+    //     e.clientY - rect.top
+    // ];
+
+    if (e instanceof MouseEvent) return [
         e.clientX - rect.left,
         e.clientY - rect.top
+    ];
+    
+
+    else return [
+        e.touches[0].clientX - rect.left,
+        e.touches[0].clientY - rect.top
     ];
 }
 
@@ -27,14 +38,14 @@ export const get_relative_pos = (
  * @description renders the dots to the canvas
  * @param {CanvasInstance} ci the canvas instance to render to
  * @param {Dots | DotsDetailed} dots the dots to render
- * @param {MouseEvent} e the mouse event to use for the mouse position
+ * @param {MouseEvent | TouchEvent} e the mouse event to use for the mouse position
  * @param {number} [x_o=0] the x coordinate to start rendering at
  * @param {number} [y_o=0] the y coordinate to start rendering at
  */
 export const render_dots = (
     ci: CanvasInstance, 
     dots: Dots | DotsDetailed,
-    e: MouseEvent = null,
+    e: MouseEvent | TouchEvent = null,
     x_o: number = 0,
     y_o: number = 0
 ): void => {
