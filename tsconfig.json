@@ -1,13 +1,25 @@
 {
     "compilerOptions": {
-      "module": "commonjs",
-      "target": "ES6",
-      "lib": ["es5", "es6", "dom"],
-      "declaration": false,
-      "noImplicitAny": false,
-      "removeComments": true,
-      "inlineSourceMap": true,
-      "allowJs": true,
-      "moduleResolution": "node"
-    }
-  }
+        "module": "commonjs",
+        "target": "ES6",
+        "lib": ["dom", "ES2022"],
+        "declaration": false,
+        "removeComments": true,
+        "inlineSourceMap": true,
+        "allowJs": true,
+        "moduleResolution": "node",
+        "outDir": "./dist",
+
+        "noImplicitAny": false,
+        "noUncheckedIndexedAccess": true,
+        "allowUnreachableCode": false,
+        "noImplicitReturns": true,
+        "allowUnusedLabels": false
+    },
+    "include": ["src/**/*"],
+    "exclude": [
+        "node_modules", 
+        "build/**/*",
+        "bundles/**/*",
+    ]
+}

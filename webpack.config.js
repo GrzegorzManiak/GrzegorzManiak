@@ -1,3 +1,4 @@
+/* eslint-disable */
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const HappyPack = require('happypack');
@@ -42,9 +43,6 @@ module.exports = {
         alias: {
             '@': path.resolve(__dirname, 'src'),
         },
-        fallback: {
-            'path': require.resolve("path-browserify")
-        }
     },
     optimization: {
         minimizer: [new TerserPlugin({

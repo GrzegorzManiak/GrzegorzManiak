@@ -1,5 +1,24 @@
-import { CanvasInstance, Dots, Dot, DotsDetailed } from './index.d';
-import { get_relative_pos } from './render';
+import { Dots, DotsDetailed } from './index.d';
+import CanvasInstance from './canvas/instance';
+
+
+
+/**
+ * @name get_relative_pos
+ * @description gets the relative position of the mouse on the canvas
+ * @param {MouseEvent} e the mouse event to use for the mouse position
+ * @returns {[number, number]} the relative position of the mouse on the canvas
+ */
+export const get_relative_pos = (
+    ci: CanvasInstance,
+    e: MouseEvent
+): [number, number] => {
+    const rect = ci.canvas.getBoundingClientRect();
+    return [
+        e.clientX - rect.left,
+        e.clientY - rect.top
+    ];
+}
 
 
 
@@ -152,3 +171,4 @@ export const push_dot = (
     // -- Return the new coordinates
     return [new_x, new_y];
 }
+

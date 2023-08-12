@@ -1,20 +1,3 @@
-export type FrameCallback = {
-    func: () => void;
-    remove: () => void;
-}
-
-export interface CanvasInstance {
-    canvas: HTMLCanvasElement;
-    ctx: CanvasRenderingContext2D;
-    draw_callback: (ctx: CanvasRenderingContext2D) => void;
-    last_frame_time: number;
-    real_frame_rate: number;
-    frame_rate: number;
-
-    frame_callbacks: Array<FrameCallback>;
-    add_frame_callback: (cb: () => void) => FrameCallback;
-}
-
 // -- X,Y Coordinates
 export type Dot = [number, number];
 
@@ -34,4 +17,38 @@ export interface Dots {
 
 export interface DotsDetailed extends Dots {
     data: Array<Array<number>>;
+}
+
+export type FrameCallback = {
+    func: () => void;
+    remove: () => void;
+};
+
+export type LogType = 'INFO' | 'WARN' | 'ERROR' | 'DEBUG';
+
+// -- The medication units will store data about how much medication is in the
+// is needed per part of body, FTU (fingertip unit) differs from part of body
+// to part of body, so we need to store that data somewhere.
+
+export type Medication = {
+    id: string;
+    name: string;
+    none?: boolean; // -- Default when no medication is selected
+};
+
+export interface DrawInstructions {
+    fill?: boolean;
+    fill_color?: string;
+
+    stroke?: boolean;
+    stroke_color?: string;
+
+    line_width?: number;
+    line_dash?: Array<number>;
+    
+    line_cap?: CanvasLineCap;
+    line_join?: CanvasLineJoin;
+
+    scale?: boolean;
+    draw_outline?: boolean;
 }

@@ -1,4 +1,4 @@
-import { CanvasInstance } from './index.d';
+import CanvasInstance from './canvas/instance';
 
 export const generate_text_points = (
     text: string, 
@@ -8,18 +8,18 @@ export const generate_text_points = (
     let balls = [],
         matrix = [];
 
-    const width = ci.canvas.width,
-        height = ci.canvas.height;
+    const width = ci.draw_ctx.canvas.width,
+        height = ci.draw_ctx.canvas.height;
 
 
-    ci.ctx.clearRect(0, 0, width, height);
-    ci.ctx.font = `${text_height}px Arial`;
-    ci.ctx.fillStyle = '#000';
-    ci.ctx.fillText(text, 0, text_height);
+    ci.draw_ctx.clearRect(0, 0, width, height);
+    ci.draw_ctx.font = `${text_height}px Arial`;
+    ci.draw_ctx.fillStyle = '#000';
+    ci.draw_ctx.fillText(text, 0, text_height);
 
         
     // -- get a Uint32 representation of the bitmap:
-    const data32 = new Uint32Array(ci.ctx.getImageData(
+    const data32 = new Uint32Array(ci.draw_ctx.getImageData(
         0, 0,
         width, 
         height 
