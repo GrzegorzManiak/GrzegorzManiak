@@ -16,6 +16,10 @@ if (!main_canvas)
 // -- Get the canvas contexts
 const main_context = main_canvas.getContext('2d');
 
+// -- GEt the play-with-me element
+const play_with_me = document.getElementById('play-with-me');
+if (!play_with_me) throw new Error('Play with me element not found');
+
 
 // -- DEV
 const dots: Dots = {
@@ -179,4 +183,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     gui.add(ctrl, 'Animation Length', 1, 10000).onChange((v) => anim_lenght = v);
     gui.add({ 'Bounce': bounce }, 'Bounce');
     gui.close();
+
+    gui._onOpenClose = () => {
+        // -- Hide the play with me arrows
+        if (!play_with_me.classList.contains('hide'))
+            play_with_me.classList.add('hide');
+    };
 });

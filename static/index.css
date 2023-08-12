@@ -13,7 +13,12 @@ body, html {
     font-family: 'Roboto', sans-serif;
 }
 
+#play-with-me, #play-with-me * {
+    pointer-events: none;
+}
+
 #play-with-me {
+    overflow: hidden;
     position: absolute;
     width: 100vw;
     height: 100vh;
@@ -40,6 +45,17 @@ body, html {
         hue-rotate(0deg) 
         brightness(100%) 
         contrast(100%);
+}
+
+#play-with-me.hide, #play-with-me.hide * {
+    pointer-events: none;
+    animation: fadeout 1s ease-in-out forwards;
+}
+
+
+@keyframes fadeout {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 
