@@ -1,6 +1,13 @@
-# Who?
+# Grzegorz Maniak
 
-Hey, I’m Greg, a final-year Computing student at TU Dublin. I love building secure, scalable systems with a focus on user privacy. Always up for collaborating.
+**Software Engineer | Founder in Residence @ Entrepreneur First**
 
-[![GrzegorzManiak](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)
-](https://linkedin.grzegorz.ie)
+## About Me
+
+I’m Greg. I build secure, scalable systems with privacy in mind. I’ve worked in startups and industry, focusing on backend and infrastructure. Currently, I’m exploring early-stage startup ideas at Entrepreneur First.
+
+## Contact
+
+Email: [contact@grzegorz.ie](mailto:contact@grzegorz.ie)
+LinkedIn: [Grzegorz Maniak](https://linkedin.com/in/grzegorzmaniak)
+GitHub: [github.com/GrzegorzManiak](https://github.com/GrzegorzManiak)
