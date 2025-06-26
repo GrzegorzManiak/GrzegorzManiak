@@ -8,6 +8,6 @@ I’m Greg. I build secure, scalable systems with privacy in mind. I’ve worked
 
 ## Contact
 
+Site: [Grzegorz.ie](https://grzegorz.ie/)
 Email: [contact@grzegorz.ie](mailto:contact@grzegorz.ie)
 LinkedIn: [Grzegorz Maniak](https://linkedin.com/in/grzegorzmaniak)
-GitHub: [github.com/GrzegorzManiak](https://github.com/GrzegorzManiak)
