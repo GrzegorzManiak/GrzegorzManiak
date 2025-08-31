@@ -1,10 +1,6 @@
 # Grzegorz Maniak
 
-**Software Engineer | Founder in Residence @ Entrepreneur First**
-
-## About Me
-
-I’m Greg. I build secure, scalable systems with privacy in mind. I’ve worked in startups and industry, focusing on backend and infrastructure. Currently, I’m exploring early-stage startup ideas at Entrepreneur First.
+I'm Greg, a software engineer focused on secure, scalable systems with privacy built in. I like to dabble in entrepreneurship, I explored early-stage ideas at Entrepreneurs First, and now I’m back at Mastercard working in payment gateways.
 
 ## Contact
 
