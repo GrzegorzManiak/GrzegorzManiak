@@ -6,4 +6,4 @@ I'm Greg, a software engineer focused on secure, scalable systems with privacy b
 
 Site: [Grzegorz.ie](https://grzegorz.ie/)
 Email: [contact@grzegorz.ie](mailto:contact@grzegorz.ie)
-LinkedIn: [Grzegorz Maniak](https://linkedin.com/in/grzegorzmaniak)
+LinkedIn: [Grzegorz Maniak](https://linkedin.com/in/grzegorz-maniak)
